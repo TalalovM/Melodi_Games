@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Угадай мелодию</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="top-bar">
+
+    <h1>🎵 Угадай мелодию</h1>
+
+    <div class="top-buttons-mini">
+      <button onclick="toggleFullscreen()">🖥</button>
+      <button onclick="openSettings()">⚙️</button>
+    </div>
+
+  </div>
+
+  <!-- КОМАНДЫ -->
+  <div id="teams"></div>
+
+  <!-- ПОЛЕ -->
+  <div id="board"></div>
+
+  <!-- PLAYER -->
+  <div id="playerModal" class="modal">
+
+    <div class="modal-content">
+
+      <h2 id="roundPoints"></h2>
+
+      <audio id="audio" controls></audio>
+
+      <div id="timer">15</div>
+
+      <button class="add-btn" onclick="playPlus()">
+        Показать ответ
+      </button>
+
+      <h3>Кто ответил?</h3>
+
+      <div id="teamButtons"></div>
+
+      <button class="close-btn" onclick="closePlayer()">
+        Закрыть
+      </button>
+
+    </div>
+
+  </div>
+
+  <!-- SETTINGS -->
+  <div id="settingsModal" class="modal">
+
+    <div class="modal-content big">
+
+      <h1 class="settings-title">⚙️ Настройки</h1>
+
+      <div class="top-buttons">
+
+        <button class="menu-btn" onclick="openTab('teamsTab')">
+          Команды
+        </button>
+
+        <button class="menu-btn" onclick="openTab('catsTab')">
+          Категории
+        </button>
+
+        <button class="menu-btn" onclick="openTab('songsTab')">
+          Музыка
+        </button>
+
+        <button class="menu-btn" onclick="openTab('designTab')">
+          Дизайн
+        </button>
+
+      </div>
+
+      <!-- TEAMS -->
+      <div id="teamsTab" class="tab active">
+
+        <div class="team-container">
+
+          <input
+            id="teamName"
+            placeholder="Название команды"
+            class="input-box"
+          >
+
+          <button
+            class="add-btn"
+            onclick="addTeam()"
+          >
+            + Добавить
+          </button>
+
+        </div>
+
+        <div id="teamsList"></div>
+
+      </div>
+
+      <!-- CATEGORIES -->
+      <div id="catsTab" class="tab">
+
+        <div class="team-container">
+
+          <input
+            id="catName"
+            placeholder="Название категории"
+            class="input-box"
+          >
+
+          <button
+            class="add-btn"
+            onclick="addCategory()"
+          >
+            + Добавить
+          </button>
+
+        </div>
+
+        <div id="catsList"></div>
+
+      </div>
+
+      <!-- SONGS -->
+      <div id="songsTab" class="tab">
+
+        <select id="catSelect" class="input-box"></select>
+
+        <br><br>
+
+        <input
+          id="points"
+          type="number"
+          placeholder="Очки"
+          class="input-box"
+        >
+
+        <br><br>
+
+        <label class="file-label">🎵 Минус песни:</label>
+<input type="file" id="minusFile">
+
+<br><br>
+
+<label class="file-label">🎤 Плюс (ответ):</label>
+<input type="file" id="plusFile">
+
+        <button
+          class="add-btn"
+          onclick="addSong()"
+        >
+          + Добавить песню
+        </button>
+
+        <div id="songsList"></div>
+
+      </div>
+
+      <!-- DESIGN -->
+      <div id="designTab" class="tab">
+
+        <input type="file" id="bgInput">
+
+        <br><br>
+
+        <button
+          class="add-btn"
+          onclick="saveSettings()"
+        >
+          Сохранить фон
+        </button>
+
+      </div>
+
+      <button
+        class="close-btn"
+        onclick="closeSettings()"
+      >
+        ✕ Закрыть
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
